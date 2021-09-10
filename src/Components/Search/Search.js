@@ -1,6 +1,19 @@
+// import axios from "axios";
+import axios from "axios";
+import { useState } from "react";
 import "./search.css";
 
+
 function Search() {
+  const API = 'https://powerful-mountain-49469.herokuapp.com/https://www.metaweather.com/api/location/search/?query='
+  const [location, setLocation] = useState('');
+  const handleLocation = (evento) =>{
+    setLocation(evento.target.value)
+  }
+  const searchLocation = () =>{
+    axios.get(API + location)
+    .then(response => console.log(response.data))
+  }
   return (
     <div className="mb-2">
       <nav className="navbar navbar-dark d-flex justify-content-start mt-3">
@@ -25,11 +38,10 @@ function Search() {
             className="form-control"
             type="text"
             placeholder="Search Location"
-            aria-label="default input example"
-            id="inputLocation"
+            onChange={handleLocation}
             required
           />
-          <button type="button" className="btn btn-outline-light mt-3" onClick="SearchLocation()">
+          <button type="button" className="btn btn-outline-light mt-3" onClick={searchLocation}>
             Search
           </button>
         </div>
