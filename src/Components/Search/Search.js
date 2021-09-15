@@ -1,21 +1,25 @@
 // import axios from "axios";
 import axios from "axios";
-import { useState } from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
 import "./search.css";
 
 
-function Search() {
-  const API = 'https://powerful-mountain-49469.herokuapp.com/https://www.metaweather.com/api/location/search/?query='
-  const [location, setLocation] = useState('');
-  const handleLocation = (evento) =>{
-    setLocation(evento.target.value)
-  }
-  const searchLocation = () =>{
-    axios.get(API + location)
-    .then(response => console.log(response.data))
-  }
+function Search(props) {
+
+
+  const { register, handleSubmit } = useForm();
+  const onSubmit = data => {
+
+    axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${data.Location}&appid=98fa15cd4f6c8ddecd35ebcea75cb290`)
+      .then((response) => {
+        props.datos(response.data)
+      })
+  };
+
   return (
     <div className="mb-2">
+
       <nav className="navbar navbar-dark d-flex justify-content-start mt-3">
         <div className="container-fluid">
           <button
@@ -32,20 +36,21 @@ function Search() {
         </div>
       </nav>
       <div className="collapse" id="navbarToggleExternalContent">
-        <div className="p-4 d-flex justify-content-center align-items-center flex-column">
+        <form className="p-4 d-flex justify-content-center align-items-center flex-column" onSubmit={handleSubmit(onSubmit)} >
           <h5 className="text-white h4">Search Location</h5>
           <input
             className="form-control"
             type="text"
             placeholder="Search Location"
-            onChange={handleLocation}
-            required
+            {...register("Location", { required: true })}
           />
-          <button type="button" className="btn btn-outline-light mt-3" onClick={searchLocation}>
+          <button type="submit" className="btn btn-outline-light mt-3" >
             Search
           </button>
-        </div>
+        </form>
       </div>
+
+
     </div>
   );
 }
