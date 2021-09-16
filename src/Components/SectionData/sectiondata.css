@@ -9,27 +9,7 @@
   color: #fff;
 }
 
-.servive-block h2 a:hover {
-  text-decoration: none;
-}
-
-.servive-block-light,
-.servive-block-default {
-  background: #fafafa;
-  border: solid 1px #eee;
-}
-
-.servive-block-default:hover {
-  box-shadow: 0 0 8px #eee;
-}
-
-.servive-block-light p,
-.servive-block-light h2,
-.servive-block-default p,
-.servive-block-default h2 {
-  color: #555;
-}
-
 .servive-block-u {
   background: #1e213a;
+  border-radius: 10%;
 }

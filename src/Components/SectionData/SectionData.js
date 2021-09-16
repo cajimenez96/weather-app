@@ -12,7 +12,7 @@ function SectionData() {
           </div>
         </div>
         <div className="col-sm-6">
-          <div className="servive-block rounded servive-block-u">
+          <div className="servive-block servive-block-u">
             <p className=" fs-5">Humidity</p>
             <h2 className="fs-1">0%</h2>
             <div className="progress">
@@ -36,7 +36,7 @@ function SectionData() {
           </div>
         </div>
         <div className="col-sm-6">
-          <div className="servive-block rounded servive-block-u">
+          <div className="servive-block servive-block-u">
             <p className="heading-md fs-5">Aire Pressure</p>
             <h2 className="fs-1">0 mb</h2>
           </div>
